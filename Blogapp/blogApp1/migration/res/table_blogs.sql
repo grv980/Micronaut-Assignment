@@ -1,0 +1,2 @@
+ALTER blogs
+        ADD
