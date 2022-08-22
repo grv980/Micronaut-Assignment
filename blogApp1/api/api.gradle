@@ -26,6 +26,7 @@ dependencies {
     testImplementation "com.fasterxml.jackson.module:jackson-module-jaxb-annotations"
 
     testImplementation project(":core").sourceSets.test.output
+    testImplementation "io.mockk:mockk:1.9.3"
 
     kapt platform("io.micronaut:micronaut-bom:$micronautVersion")
     kapt "io.micronaut:micronaut-inject-java"

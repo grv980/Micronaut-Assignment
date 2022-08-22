@@ -17,6 +17,10 @@ class BlogControllerImpl(
         return Response(ResponseType.SUCCESS, body = response)
     }
 
+    override fun fetchBlogById(blogId: Long): Response<Any> {
+        TODO("Not yet implemented")
+    }
+
     override fun createUser(userName: String): Response<Any> {
         val response = blogService.createUser(userName)
         return Response(ResponseType.SUCCESS, body = response)
@@ -24,10 +28,10 @@ class BlogControllerImpl(
 
     override fun createUserBlog(userId: Long, title: String, content: String): Response<Any> {
         val response = blogService.createUserBlog(userId, title, content)
-        if (response.isNotEmpty()){
-            return Response(ResponseType.SUCCESS, body = response)
+        return if (response.isNotEmpty()){
+            Response(ResponseType.SUCCESS, body = response)
         }else {
-            return Response(ResponseType.NO_CONTENT, body = "user not found")
+            Response(ResponseType.NO_CONTENT, body = "user not found")
         }
     }
 
@@ -42,19 +46,19 @@ class BlogControllerImpl(
 
     override fun deleteUserBlog(userId: Long, blogId: Long): Response<Any> {
         val response=blogService.deleteUserBlog(userId,blogId)
-        if(response.isEmpty()){
-            return Response(ResponseType.SUCCESS, body = "blog deleted successfully")
+        return if(response.isEmpty()){
+            Response(ResponseType.SUCCESS, body = "blog deleted successfully")
         }else {
-            return Response(ResponseType.NOT_FOUND, body = "no content found")
+            Response(ResponseType.NOT_FOUND, body = "no content found")
         }
     }
 
     override fun displayUserBlog(userId: Long): Response<Any> {
         val response = blogService.displayUserBlog(userId)
-        if (response.isEmpty()){
-            return Response(ResponseType.NOT_FOUND, body = "user not found")
+        return if (response.isEmpty()){
+            Response(ResponseType.NOT_FOUND, body = "user not found")
         }else{
-            return Response(ResponseType.SUCCESS, body = response)
+            Response(ResponseType.SUCCESS, body = response)
         }
 
 

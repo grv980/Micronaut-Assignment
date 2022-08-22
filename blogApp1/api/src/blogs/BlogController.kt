@@ -1,7 +1,7 @@
 package blogs
 
-import blogs.core.models.Blog
-import blogs.core.models.user
+
+
 import utility.Response
 
 interface BlogController {

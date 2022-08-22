@@ -19,8 +19,9 @@ repositories {
         }
     }
     maven {
-        url 'https://jitpack.io'
+        url "https://maven.google.com"
     }
+    jcenter()
 }
 
 sonarqube {
@@ -89,6 +90,7 @@ subprojects {
     }
 
     dependencies {
+        implementation "io.micronaut:micronaut-inject-java"
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
         testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
         testImplementation "io.micronaut.test:micronaut-test-kotest:1.2.0"
@@ -146,7 +148,7 @@ task codeCoverageReport(type: JacocoReport) {
     // Gather execution data from all subprojects
     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
-    // Add all relevant sourcesets from the subprojects
+    // Add all relevant sourcetrees from the subprojects
     subprojects.each {
         sourceSets it.sourceSets.main
     }
@@ -167,8 +169,8 @@ test.finalizedBy(codeCoverageReport)
 dependencies {
     kaptTest "io.micronaut:micronaut-inject-java"
     testImplementation "io.micronaut.test:micronaut-test-kotest5:3.4.0"
-    testImplementation "io.mockk:mockk:{mockkVersion}"
-    testImplementation "io.kotest:kotest-runner-junit5-jvm:{kotestVersion}"
+    testImplementation 'io.mockk:mockk:1.12.5'
+    testImplementation 'io.kotest:kotest-runner-junit5-jvm:5.4.1'
 }
 
 // use JUnit 5 platform
