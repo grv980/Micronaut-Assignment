@@ -90,7 +90,8 @@ subprojects {
     }
 
     dependencies {
-        implementation "io.micronaut:micronaut-inject-java"
+
+        implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.50"
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
         testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
         testImplementation "io.micronaut.test:micronaut-test-kotest:1.2.0"
@@ -168,12 +169,23 @@ codeCoverageReport.dependsOn {
 test.finalizedBy(codeCoverageReport)
 dependencies {
     kaptTest "io.micronaut:micronaut-inject-java"
-    testImplementation "io.micronaut.test:micronaut-test-kotest5:3.4.0"
+    testImplementation 'io.micronaut.test:micronaut-test-kotest5:3.5.0'
     testImplementation 'io.mockk:mockk:1.12.5'
-    testImplementation 'io.kotest:kotest-runner-junit5-jvm:5.4.1'
+    testImplementation 'io.kotest:kotest-runner-junit5-jvm:5.4.2'
 }
 
 // use JUnit 5 platform
 test {
     useJUnitPlatform()
+}
+
+allprojects {
+    repositories {
+
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+    detektPlugins 'com.medly:detekt-extensions:0.0.2'
 }

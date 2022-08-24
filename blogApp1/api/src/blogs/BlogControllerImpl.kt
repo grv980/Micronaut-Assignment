@@ -18,7 +18,8 @@ class BlogControllerImpl(
     }
 
     override fun fetchBlogById(blogId: Long): Response<Any> {
-        TODO("Not yet implemented")
+        return Response(ResponseType.SUCCESS)
+
     }
 
     override fun createUser(userName: String): Response<Any> {
@@ -36,7 +37,7 @@ class BlogControllerImpl(
     }
 
     override fun updateUserBlog(userId: Long, blogId: Long, title: String, content: String): Response<Any> {
-        val response= blogService.updateUserBlog(userId,blogId,title,content)
+        val response= blogService.updateUserBlog(userId, title, content)
         if(response.isEmpty()){
             return Response(ResponseType.NOT_FOUND, body = "no content found")
 

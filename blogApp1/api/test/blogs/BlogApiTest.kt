@@ -14,8 +14,8 @@ import utility.ResponseType
 @MicronautTest
 class BlogApiTest (
     private val blogControllerImpl: BlogControllerImpl
-        ):BehaviorSpec ({
-    given("displaying all blogs") {
+          ):BehaviorSpec ({
+        given("displaying all blogs") {
         `when`("the blog API is called /api/v1/blogs") {
             val result = blogControllerImpl.getAll()
             then("display success"){
@@ -23,7 +23,7 @@ class BlogApiTest (
             }
         }
 
-        given("creating blog"){
+            given("creating blog"){
             `when`("the blog API is called /api/v1/user/{userid}/blog"){
                 val result = blogControllerImpl.createUserBlog(1,"kotlin","kotest5")
                 then("display success"){
